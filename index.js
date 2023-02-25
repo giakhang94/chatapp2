@@ -28,7 +28,7 @@ app.get("*", function (request, response) {
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chatapp2-socketio.onrender.com",
     methods: ["GET", "POST"],
   },
 });

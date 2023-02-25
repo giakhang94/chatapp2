@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import { useState } from "react";
 import Chat from "./Chat";
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://chatapp2-socketio.onrender.com");
 function App() {
   const [input, setInput] = useState({
     name: "",
@@ -31,6 +31,7 @@ function App() {
             type="text"
             placeholder="Enter your name"
             className="border border-gray-300 py-1 px-2 rounded-sm w-full max-w-[350px] mx-1"
+            disabled={!showChat}
           />
           <input
             value={input.room}
@@ -39,16 +40,20 @@ function App() {
             }}
             type="text"
             placeholder="Enter room ID"
+            disabled={!showChat}
             className="border border-gray-300 py-1 px-2 rounded-sm w-full max-w-[350px] mx-1"
           />
           <button
             onClick={handleSubmit}
+            disabled={!showChat}
             className=" mx-1 px-2 py-1 w-full max-w-[350px] bg-green-500 text-white font-semibold tracking-[1.5px] rounded-sm border border-green-500"
           >
             Join Room
           </button>
         </form>
-        <Chat socket={socket} name={input.name} room={input.room} />
+        {showChat && (
+          <Chat socket={socket} name={input.name} room={input.room} />
+        )}
       </div>
     </div>
   );
