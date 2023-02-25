@@ -31,7 +31,7 @@ function App() {
             type="text"
             placeholder="Enter your name"
             className="border border-gray-300 py-1 px-2 rounded-sm w-full max-w-[350px] mx-1"
-            disabled={!showChat}
+            disabled={showChat === false ? true : false}
           />
           <input
             value={input.room}
@@ -40,12 +40,12 @@ function App() {
             }}
             type="text"
             placeholder="Enter room ID"
-            disabled={!showChat}
+            disabled={showChat === false ? true : false}
             className="border border-gray-300 py-1 px-2 rounded-sm w-full max-w-[350px] mx-1"
           />
           <button
             onClick={handleSubmit}
-            disabled={!showChat}
+            disabled={showChat === false ? true : false}
             className=" mx-1 px-2 py-1 w-full max-w-[350px] bg-green-500 text-white font-semibold tracking-[1.5px] rounded-sm border border-green-500"
           >
             Join Room
